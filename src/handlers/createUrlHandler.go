@@ -51,7 +51,10 @@ func CreateUrlHandler(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(types.Response{
 			Message: "ok",
 			Status: http.StatusOK,
-			Data: existedUrl,
+			Data: models.Urls{
+				LongUrl: existedUrl.LongUrl,
+				ShortUrl: os.Getenv("DOMAIN") + existedUrl.ShortUrl,
+			},
 		})
 		return
 	}

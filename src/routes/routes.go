@@ -10,7 +10,7 @@ func RegisterRoutes()(*http.ServeMux) {
 	router := http.NewServeMux()
 
 	router.HandleFunc("POST /url", handlers.CreateUrlHandler)
-
+	router.HandleFunc("GET /{id}", handlers.GetOriginalUrlHandler)
 
 	return router
 }
